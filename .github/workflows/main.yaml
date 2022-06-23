@@ -1,47 +1,25 @@
-name: 'my first github action'
+name: 'My first github action'
 
 on: push
-
-env:
-  WORKFLOW_LEVEL: "THIS VALUE COMES FROM THE WORKFLOW LEVEL"
 
 jobs:
   first-job:
     name: 'first job'
 
-    runs-on: ubuntu-lastest
+    runs-on: ubuntu-latest
 
-    env:
-      JOB_LEVLE_1: "THIS COMES FROM JOB LEVEL 1"
     steps:
-      - name: set output value
-      shell: bash
-      run: |
-        first_value='This is the first ouyput value'
-
-        echo "::set-output name=my_first_value::$first_value"
-
-    - name: get output value
+    - name: mask value
       id: first
       shell: bash
       run: |
-        echo ${{ steps.first.output.myfirst_value }}
+        first_value="This is the first output value"
 
-    - name: Say Hello World 1
+        echo "::add-mask::$first_value"
+        echo "::set-output name=my_first_value::$first_value"
+
+    - name: get output value
       shell: bash
-      env:
-        STEP_LEVEL_1: "THIS COMES FORM STEP LEVEL 1"
       run: |
-        echo "Hello world from step 1"
-        echo "$WORKLOW_LEVEL"
-        echo "JOB_LEVEL_1"
-        echo "JOB_LEVEL_2"
-        echo "STEP_VALUE_1 = 'THIS IS SET BY STEP !'" >> $GITHUB_ENV
-
-
-    - name: Say hello world 2
-
-      shell: pwsh
-      run: |
-        echo "Hello world from step 2"
-        echo "VALUE : ${{ env.STEP_VALUE_1 }}"
+        echo ${{ steps.first.outputs.my_first_value }}
+        echo "SECRET: ${{ secrets.HELLO }}"
