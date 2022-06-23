@@ -31,4 +31,4 @@ jobs:
       shell: pwsh
       run: |
         echo "Hello world from step 2"
-        echo "VALUE : ${{ env, STEP_VALUE_1 }}"
+        echo "VALUE : ${{ env.STEP_VALUE_1 }}"
