@@ -37,7 +37,7 @@ jobs:
         echo "SECRET: ${{ secrets.HELLO }}"
 
   second-job:
-    name: 'first job'
+    name: 'second job'
     if: github.event_name == 'pull_request'
 
     runs-on: 'ubuntu-latest'
