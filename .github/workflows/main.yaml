@@ -23,30 +23,12 @@ jobs:
         echo "$WORKLOW_LEVEL"
         echo "JOB_LEVEL_1"
         echo "JOB_LEVEL_2"
+        echo "STEP_VALUE_1 = 'THIS IS SET BY STEP !'" >> $GITHUB_ENV
+
 
     - name: Say hello world 2
+
       shell: pwsh
       run: |
         echo "Hello world from step 2"
-
-  second-job:
-    name: 'second job'
-
-    runs-on: ubuntu-lastest
-
-    env:
-      JOB_LEVLE_2: "THIS COMES FROM JOB LEVEL 2"
-    steps:
-    - name: Say Hello World 1
-      shell: bash
-      env:
-        STEP_LEVEL_1: "THIS COMES FORM STEP LEVEL 1"
-      run: |
-        echo "Hello world from step 1"
-        echo "$WORKLOW_LEVEL"
-        echo "JOB_LEVEL_2"
-
-    - name: Say hello world 2
-      shell: pwsh
-      run: |
-        echo "Hello world from step 2"
+        echo "VALUE : ${{ env, STEP_VALUE_1 }}"
