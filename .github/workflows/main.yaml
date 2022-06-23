@@ -1,0 +1,20 @@
+name: "my first github action"
+
+on: push
+
+jobs:
+  first-job:
+    name: 'first job'
+
+    runs-on: ubuntu-lastest
+
+    steps:
+    - name: Say Hello World 1
+      shell: bash
+      run: |
+        echo "Hello world from step 1"
+
+    - name: Say hello world 2
+      shell: pwsh
+      run: |
+      echo "Hello world from step 2"
