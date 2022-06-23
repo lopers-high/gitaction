@@ -1,4 +1,4 @@
-name: "my first github action"
+name: 'my first github action'
 
 on: push
 
@@ -14,8 +14,7 @@ jobs:
     env:
       JOB_LEVLE_1: "THIS COMES FROM JOB LEVEL 1"
     steps:
-
-    - name: set output value
+      - name: set output value
       shell: bash
       run: |
         first_value='This is the first ouyput value'
