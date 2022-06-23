@@ -14,6 +14,20 @@ jobs:
     env:
       JOB_LEVLE_1: "THIS COMES FROM JOB LEVEL 1"
     steps:
+
+    - name: set output value
+      shell: bash
+      run: |
+        first_value='This is the first ouyput value'
+
+        echo "::set-output name=my_first_value::$first_value"
+
+    - name: get output value
+      id: first
+      shell: bash
+      run: |
+        echo ${{ steps.first.output.myfirst_value }}
+
     - name: Say Hello World 1
       shell: bash
       env:
