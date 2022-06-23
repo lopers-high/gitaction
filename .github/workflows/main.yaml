@@ -9,18 +9,23 @@ jobs:
     strategy:
       matrix:
         os: [ 'windows-latest', 'macos-latest', 'ubuntu-latest' ]
+        nodejs: [ '14.x', '16.x' ]
     runs-on: ${{ matrix.os }}
 
     steps:
     - name: out value from ${{ matrix.os }}
       id: first
       shell: bash
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.nodejs }}
       run: |
         first_value="This is the first output value"
 
         echo "::add-mask::$first_value"
         echo "::set-output name=my_first_value::$first_value"
         echo "OS : ${{ matrix.os }}"
+        echo "node.js : ${{ matrix.nodejs }}"
 
     - name: get output value
       shell: bash
